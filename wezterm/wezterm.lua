@@ -11,6 +11,15 @@ wezterm.on('update-right-status', function(window, pane)
   window:set_right_status(name or '')
 end)
 
+wezterm.on("gui-startup", function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+
+  window:gui_window():maximize()
+
+  local bot0 = pane:split { direction = "Bottom", size = 0.25 }
+
+end)
+
 return {
   adjust_window_size_when_changing_font_size = false,
   color_scheme = 'Dark Violet (base16)',
@@ -38,13 +47,19 @@ return {
       }
     }
   },
-  font_size = 14.0,
+  font_size = 28.0,
 
   leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1500 },
 
   keys = {
 
     { key = 'n',  mods = 'ALT',    action = wezterm.action.ToggleFullScreen },
+
+    {
+      key = 'j',
+      mods = 'LEADER',
+      action = wezterm.action.ActivateKeyTable({ name = "scroll_line", one_shot = false })
+    },
 
     -- TAB CONTROLS (CLOSE)
     -- initiate Tab movement
@@ -108,6 +123,11 @@ return {
       { key = 'j',      action = wezterm.action.AdjustPaneSize { 'Down',  1 } },
       { key = 'k',      action = wezterm.action.AdjustPaneSize { 'Up',    1 } },
       { key = 'l',      action = wezterm.action.AdjustPaneSize { 'Right', 1 } },
+      { key = 'Escape', action = 'PopKeyTable' },
+    },
+    scroll_line = {
+      { key = 'j',      action = wezterm.action.ScrollByLine(1) },
+      { key = 'k',      action = wezterm.action.ScrollByLine(-1) },
       { key = 'Escape', action = 'PopKeyTable' },
     },
     tab_movement ={
