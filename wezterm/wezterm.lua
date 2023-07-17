@@ -1,5 +1,4 @@
 local wezterm = require 'wezterm'
---local tab, pane, window = wezterm.mux.spawn_window {}
 
 ---- Show which key table is active in the status area
 ---@diagnostic disable-next-line: unused-local
@@ -19,7 +18,7 @@ wezterm.on("gui-startup", function(cmd)
   local bot0 = pane:split { direction = "Bottom", size = 0.25 }
 
 end)
-
+ 
 return {
   adjust_window_size_when_changing_font_size = false,
   color_scheme = 'Dark Violet (base16)',
