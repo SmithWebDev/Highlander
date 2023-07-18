@@ -97,3 +97,6 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+export LDFLAGS='-L/opt/homebrew/opt/postgresql@15/lib'
+export CPPFLAGS='-I/opt/homebrew/opt/postgresql@15/include'
