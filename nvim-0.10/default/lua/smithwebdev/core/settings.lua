@@ -59,7 +59,10 @@ vim.opt.number         = true
 vim.opt.relativenumber = true
 
 --[[ Window/Buffer/Tab Options ]]--
+vim.opt.formatoptions  = "jcroqlnt" -- tcqj
+vim.opt.conceallevel   = 3
 vim.opt.hidden         = true
+vim.opt.signcolumn     = 'yes'
 vim.opt.cmdheight      = 0
 vim.opt.guifont        = 'FiraCode'
 vim.opt.pumheight      = 10
