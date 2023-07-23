@@ -6,6 +6,11 @@ return {
     vim.o.timeoutlen = 300
   end,
   config = function()
-    require('which-key').setup()
+    require('which-key').setup({})
+    local wk = require("which-key")
+
+    wk.register({},{ prefix = "<leader>" })
+    wk.register({},{ prefix = "<leader<leader>" })
+    wk.register({},{ prefix = "<Tab>" })
   end
 }
