@@ -15,19 +15,21 @@ return {
   },
   {
     'folke/tokyonight.nvim',           --https://github.com/folke/tokyonight.nvim
-    opts = {
-      dim_inactive = true,
-      style = {
-        comments = { italic = true },
-        keywords = { italic = true },
-        floats = 'normal',
-        functions = { italic = true },
-        sidebars = 'normal',
-        variables = {},
-      },
-      sidebars = {},
-      terminal_colors = true,
-      transparent = true,
-    }
+    config = function()
+      require('tokyonight').setup({
+        dim_inactive = true,
+        style = {
+          comments = { italic = true },
+          keywords = { italic = true },
+          floats = 'normal',
+          functions = { italic = true },
+          sidebars = 'normal',
+          variables = {},
+        },
+        sidebars = {},
+        terminal_colors = true,
+        transparent = true,
+      })
+    end
   },
 }
