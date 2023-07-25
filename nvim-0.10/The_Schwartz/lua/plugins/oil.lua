@@ -6,17 +6,17 @@ return {
       keymaps = {
         ["g?"] = 'actions.show_help',
         ["<CR>"] = 'actions.select',
-        ["<Tab>\\"] = 'actions.select_vsplit',
-        ["<Tab>-"] = 'actions.select_split',
-        ["<Tab><Tab>"] = 'actions.select_tab',
+        ["<Space>\\"] = 'actions.select_vsplit',
+        ["<Space>-"] = 'actions.select_split',
+        ["<Space><Tab>"] = 'actions.select_tab',
         ["<C-p>"] = 'actions.preview',
         ["<C-e>"] = 'actions.close',
-        ["<Tab>r"] = 'actions.refresh',
+        ["<Space>r"] = 'actions.refresh',
         ["-"] = 'actions.parent',
         ["_"] = 'actions.open_cwd',
         ["`"] = 'actions.cd',
         ["~"] = 'actions.tcd',
-        ["g."] = 'actions.hidden',
+        ["g."] = 'actions.toggle_hidden',
       },
       use_default_keymaps = false
     })
