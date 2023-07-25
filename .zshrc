@@ -4,6 +4,7 @@ export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export LDFLAGS='-L/opt/homebrew/opt/postgresql@15/lib'
 export CPPFLAGS='-I/opt/homebrew/opt/postgresql@15/include'
+export EDITOR='nvim'
 
 ZSH_THEME="robbyrussell"
 
@@ -18,7 +19,148 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git elixir zsh-vi-mode)
+BUNDLED_COMMANDS=(rubocop)
+
+plugins=(
+  asdf
+  bundler
+  colored-man-pages
+  colorize
+  dash
+  elixir
+  git
+  zsh-autosuggestions
+  zsh-vi-mode
+)
+
+##############################
+#          ALIAS             #
+##############################
+
+# Brew Commands/ Serives
+# ----------------------------
+
+#---- PostgreSQL Services
+alias pgstart='brew services start postgresql'
+alias pgstop='brew services stop postgresql'
+
+#---- Redis Services
+alias redisstart='brew services start redis'
+alias redisstop='brew services stop redis'
+
+#---- PostgreSQL & Redis
+alias startservices='brew services start redis && brew services start postgresql@14'
+alias stopservices='brew services stop redis && brew services stop postgresql@14'
+
+#     Config files
+# ----------------------------
+
+#---- ZSH Shell Configuration
+alias zshc='nvim ~/.zshrc'
+alias szsh='source ~/.zshrc'
+
+#---- Neovim Configuration Directory
+alias nvc='nvim ~/.config/nvim/'
+
+#---- Neovim Plugin Directory
+alias nvp='nvim ~/.config/nvim/lua/smithwebdev/plugins'
+
+#---- Wezterm Configuration
+alias wc='nvim ~/.config/wezterm/wezterm.lua'
+
+#     Neovim Aliases
+# ----------------------------
+
+#---- Alternate Neovim launch commands
+alias v='nvim'
+alias nv='nvim'
+
+#---- Update Neovim Nightly
+alias update_neovim='brew uninstall neovim && brew install neovim --HEAD'
+
+# ----------------------------
+#     Language Aliases
+# ----------------------------
+
+#     Git
+# ----------------------------
+
+#---- Git Status
+alias gs='git status'
+
+#     Rails
+# ----------------------------
+
+#---- start rails foreman server
+alias bd='bin/dev'
+
+#---- start rails server
+alias rs='rails s'
+
+#---- start rails console
+alias rc='rails c'
+
+#---- start rails test
+alias rt='rails test'
+
+#---- Rails Search & Kill Server
+alias search='lsof -wni tcp:3000'
+alias search1='lsof -wni tcp:5432'
+alias destroy='kill -9 $1'
+
+#---- Rails Routes Alias -------
+alias rr='rails routes'
+alias rrg='rails routes | grep $1'
+
+
+####################################
+#        FUNCTIONS
+####################################
+
+#-----------------------------------
+#        Bash Terminal Functions
+#-----------------------------------
+
+#------- make directory and change directory
+function mkcd() { mkdir $1 && cd $1;}
+
+#---------------------------
+#        Git Functions
+#---------------------------
+
+#------- Initial Git Commit
+function gic() { git add . && git commit -m "initial commit";}
+
+#------- Git Merge => Master
+function gmerge() { git checkout master && git merge $1 && git push;}
+
+#------- Git commit & push to branch
+function gcpu() { git add . && git commit -m "$1" && git push -u origin $2;}
+
+#------- Git commit & upstream push
+function gacp() { git add . && git commit -m "$1" && git push;}
+
+#------- Git add remote && push
+function grap() { git remote add origin $1 && git push -u origin master;}
+
+
+#---------------------------
+#        Neovim Functions
+#---------------------------
+
+#------- Neovim Configuration Switcher
+function nvims() {
+  items=('default' 'Lazy')
+  config=$(printf "%s\n" "${items[@]}" | fzf --prompt="Neovim Config >> " --height=~50% --layout=reverse --border --exit-0)
+  if [[ -z $config ]]; then
+    echo "Nothing selected"
+    return 0
+  elif [[ $config == 'default' ]]; then
+    config=""
+  fi
+  NVIM_APPNAME=$config nvim $0
+}
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -52,3 +194,4 @@ ASDF_GOLANG_MOD_VERSION_ENABLED=true
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
