@@ -1,5 +1,9 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
+export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+export LDFLAGS='-L/opt/homebrew/opt/postgresql@15/lib'
+export CPPFLAGS='-I/opt/homebrew/opt/postgresql@15/include'
 
 ZSH_THEME="robbyrussell"
 
@@ -43,6 +47,8 @@ source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-export LDFLAGS='-L/opt/homebrew/opt/postgresql@15/lib'
-export CPPFLAGS='-I/opt/homebrew/opt/postgresql@15/include'
+
+ASDF_GOLANG_MOD_VERSION_ENABLED=true
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
