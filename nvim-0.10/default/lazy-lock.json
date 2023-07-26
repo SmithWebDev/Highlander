@@ -7,6 +7,7 @@
   "lsp_signature.nvim": { "branch": "master", "commit": "58d4e810801da74c29313da86075d6aea537501f" },
   "navigator.lua": { "branch": "master", "commit": "4ba2c9557ea03243b079cf6c44572e1a6f011abc" },
   "null-ls.nvim": { "branch": "main", "commit": "db09b6c691def0038c456551e4e2772186449f35" },
+  "nvim-autopairs": { "branch": "master", "commit": "ae5b41ce880a6d850055e262d6dfebd362bb276e" },
   "nvim-lspconfig": { "branch": "master", "commit": "6f426c34c8e21af2f934e56be9d1198a507ecc9f" },
   "nvim-notify": { "branch": "master", "commit": "ea9c8ce7a37f2238f934e087c255758659948e0f" },
   "nvim-treesitter": { "branch": "master", "commit": "736a672afe852dbad4199002c89b7461b285c47f" },
