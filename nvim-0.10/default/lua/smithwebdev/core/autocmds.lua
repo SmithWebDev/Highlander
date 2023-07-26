@@ -96,3 +96,16 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
   desc = 'Disable cursorline on insert',
 })
 
+--------------------------------------------------------------------------------
+vim.api.nvim_create_autocmd(
+    'BufWritePre', {
+        pattern = '*',
+        desc = 'Create directory if it does not exists',
+        callback = function()
+            local filedir = vim.fn.expand('%:p:h')
+            if vim.fn.isdirectory(filedir) == 0 then
+                vim.fn.mkdir(filedir, 'p')
+            end
+        end
+    }
+)
