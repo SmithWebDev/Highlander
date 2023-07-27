@@ -1,0 +1,10 @@
+--skip-action-text
+--skip-action-cable
+--skip-jbuilder
+--skip-action-mailbox
+--skip-active-storage
+--skip-spring
+--database=postgresql
+--asset-pipeline=propshaft
+--css=tailwind
+--javascript=esbuild
