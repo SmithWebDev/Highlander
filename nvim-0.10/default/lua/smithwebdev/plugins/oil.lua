@@ -16,7 +16,7 @@ return {
         ["_"] = 'actions.open_cwd',
         ["`"] = 'actions.cd',
         ["~"] = 'actions.tcd',
-        ["g."] = 'actions.hidden',
+        ["g."] = 'actions.toggle_hidden',
       },
       use_default_keymaps = false
     })

@@ -105,7 +105,7 @@ return {
         -- 	-- Set `select` to `false` to only confirm explicitly selected items.
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
         -- ["<Space><Space>"] = cmp.mapping.confirm({ select = false }),
-        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+        -- ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       },
       formatting = {
         fields = { 'kind', 'abbr', 'menu' },
