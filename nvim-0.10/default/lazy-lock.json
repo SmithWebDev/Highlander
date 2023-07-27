@@ -51,6 +51,7 @@
   "telescope-octo-commands.nvim": { "branch": "main", "commit": "623f0f928bdd52bb7bb525105ef31d3965967796" },
   "telescope-rails-related-files": { "branch": "master", "commit": "cb1b7f77ac95f7a293fb9fb0c3ac3b8136403854" },
   "telescope-send-to-harpoon.nvim": { "branch": "main", "commit": "128b998a4e3d75e8ec73b2fb0fdfd0c735ffedbc" },
+  "telescope-undo.nvim": { "branch": "main", "commit": "3dec002ea3e7952071d26fbb5d01e2038a58a554" },
   "telescope-vimwiki.nvim": { "branch": "main", "commit": "13a83b6107da17af9eb8a1d8e0fe49e1004dfeb4" },
   "telescope.nvim": { "branch": "master", "commit": "1228f3b15ca3d9b95dcb92efda6a3448871030bd" },
   "tree-sitter-query": { "branch": "master", "commit": "3a9808b22742d5bd906ef5d1a562f2f1ae57406d" },

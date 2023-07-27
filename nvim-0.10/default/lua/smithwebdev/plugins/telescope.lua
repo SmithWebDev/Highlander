@@ -6,7 +6,8 @@ return {
     'erlingur/telescope-rails-related-files',       -- https://github.com/erlingur/telescope-rails-related-files
     'ElPiloto/telescope-vimwiki.nvim',              -- https://github.com/ElPiloto/telescope-vimwiki.nvim
     'xiyaowong/telescope-octo-commands.nvim',       -- https://github.com/xiyaowong/telescope-octo-commands.nvim
-    'asbjornhaland/telescope-send-to-harpoon.nvim',  -- https://github.com/asbjornhaland/telescope-send-to-harpoon.nvim
+    'asbjornhaland/telescope-send-to-harpoon.nvim', -- https://github.com/asbjornhaland/telescope-send-to-harpoon.nvim
+    'debugloop/telescope-undo.nvim', -- https://github.com/debugloop/telescope-undo.nvim
   },
   config = function()
     local telescope = require("telescope")
@@ -48,16 +49,41 @@ return {
           }
         },
       },
-
+extensions = {
+    undo = {
+      side_by_side = true,
+      layout_strategy = "vertical",
+      layout_config = {
+        preview_height = 0.8,
+      },
+    },
+  },extensions = {
+    undo = {
+      side_by_side = true,
+      layout_strategy = "vertical",
+      layout_config = {
+        preview_height = 0.8,
+      },
+    },
+  },      extensions = {
+        undo = {
+          side_by_side = true,
+          layout_strategy = "vertical",
+          layout_config = {
+            preview_height = 0.8,
+          },
+        },
+      },
     })
   end,
   opts = function(_, opts)
     local telescope = require("telescope")
     telescope.load_extension('luasnip')
-    telescope.load_extension('rails_related_files')
-    telescope.load_extension('vimwiki')
     telescope.load_extension('octo_commands')
+    telescope.load_extension('rails_related_files')
     telescope.load_extension('send_to_harpoon')
+    telescope.load_extension('undo')
+    telescope.load_extension('vimwiki')
   end,
   keys = {
     {
@@ -81,9 +107,9 @@ return {
       desc = "Find Plugin File",
     },
     --{
-    --  '<leader>', -- vimwiki
-    --  ,
-    --  desc = '',
+    --  '<leader>su', -- undo list
+    --  ':Telescope undo,
+    --  desc = 'Undo Tree visualization',
     --},
     {
       '<Tab>ft',
