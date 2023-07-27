@@ -73,7 +73,7 @@ alias wc='nvim ~/.config/wezterm/wezterm.lua'
 
 #---- Alternate Neovim launch commands
 alias v='nvim'
-alias nv='nvim'
+# alias nv='nvim'
 
 #---- Update Neovim Nightly
 alias update_neovim='brew uninstall neovim && brew install neovim --HEAD'
@@ -149,11 +149,11 @@ function grap() { git remote add origin $1 && git push -u origin master;}
 #---------------------------
 
 #------- Neovim Configuration Switcher
-function nvims() {
-  items=('default' 'Lazy')
+function nv() {
+  items=('default' 'Lazy' 'wassimk')
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt="Neovim Config >> " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
-    echo "Nothing selected"
+    echo "No configuration was selected"
     return 0
   elif [[ $config == 'default' ]]; then
     config=""
