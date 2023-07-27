@@ -8,6 +8,49 @@ return {
     'xiyaowong/telescope-octo-commands.nvim',       -- https://github.com/xiyaowong/telescope-octo-commands.nvim
     'asbjornhaland/telescope-send-to-harpoon.nvim',  -- https://github.com/asbjornhaland/telescope-send-to-harpoon.nvim
   },
+  config = function()
+    local telescope = require("telescope")
+    require('telescope').setup({
+      defaults = {
+        layout_config = { prompt_position = 'bottom' },
+        layout_strategy = 'horizontal',
+        sorting_strategy = 'descending',
+        mappings = {
+          ['i'] = {
+            ['<c-h>'] = telescope.extensions.send_to_harpoon.actions.send_selected_to_harpoon
+            --['<esc>'] = require("telescope.actions").close,
+            --['<C-s>'] = require('telescope.actions').add_selection,
+            --['<C-x>'] = require('telescope.actions').remove_selection,
+            --['<C-j>'] = require('telescope.actions').move_selection_next,
+            --['<C-k>'] = require('telescope.actions').move_selection_previous,
+            --['<C-v>'] = require('telescope.actions').move_selection_previous,
+            --['<leader>-'] = require('telescope.actions').select_horizontal,
+            --['<leader>\\'] = require('telescope.actions').select_vertical,
+            --['<C-h>'] = require('telescope.actions').add_to_qflist,
+            --['<C-a>'] = require('telescope.actions').add_selected_to_qflist,
+            --['<C-q>'] = require('telescope.actions').send_selected_to_qflist,
+          },
+          ['n'] = {
+            ['<c-h>'] = telescope.extensions.send_to_harpoon.actions.send_selected_to_harpoon
+            --['<esc>'] = require("telescope.actions").close,
+            --['<C-s>'] = require('telescope.actions').add_selection,
+            --['<C-x>'] = require('telescope.actions').remove_selection,
+            --['<C-j>'] = require('telescope.actions').move_selection_next,
+            --['<C-k>'] = require('telescope.actions').move_selection_previous,
+            --['-'] = require('telescope.actions').select_horizontal,
+            --['\\'] = require('telescope.actions').select_vertical,
+            --['t'] = require('telescope.actions').select_tab,
+            --['<C-h>'] = require('telescope.actions').add_to_qflist,
+            --['<C-a>'] = require('telescope.actions').add_selected_to_qflist,
+            --['<C-q>'] = require('telescope.actions').send_selected_to_qflist,
+            --['q'] = require('telescope.actions').open_qflist,
+            --['?'] = require('telescope.actions').which_key,
+          }
+        },
+      },
+
+    })
+  end,
   opts = function(_, opts)
     local telescope = require("telescope")
     telescope.load_extension('luasnip')
@@ -15,17 +58,6 @@ return {
     telescope.load_extension('vimwiki')
     telescope.load_extension('octo_commands')
     telescope.load_extension('send_to_harpoon')
-
-    opts.defaults.mappings = {
-      i = {
-        --['<c-j>'] = require("telescope.actions")
-        --['<c-k>'] =
-        ['<c-h>'] = telescope.extensions.send_to_harpoon.actions.send_selected_to_harpoon
-      },
-      n = {
-        ['<c-h>'] = telescope.extensions.send_to_harpoon.actions.send_selected_to_harpoon
-      },
-    }
   end,
   keys = {
     {
@@ -65,4 +97,3 @@ return {
     },
   }
 }
-
