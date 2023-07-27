@@ -1,0 +1,10 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never
+gui:
+  showIcons: true
+keybinding:
+  universal:
+    scrollDownMain: <c-d>
+    scrollUpMain: <c-u>
