@@ -2,7 +2,7 @@ return {
   'L3MON4D3/LuaSnip',                               -- https://github.com/L3MON4D3/LuaSnip
   event = "VeryLazy",
   build = 'make install_jsregexp',
-  dependences = {
+  dependencies = {
     'honza/vim-snippets',                           -- https://github.com/honza/vim-snippets
     config = function()
       require("luasnip.loaders.from_snipmate").lazy_load()
