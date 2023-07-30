@@ -61,10 +61,10 @@ vim.keymap.set("v", 'K', ":m '<-2<CR>gv=gv", { desc = 'Move Lines Up', silent = 
 
 --[[ Resize Window Panes ]]
 -----------------------------------------------------
---vim.keymap.set("n", '<up>',                 ':resize -2<CR>',                { desc = 'Resize Window Up', silent = true  })
---vim.keymap.set("n", '<down>',               ':resize +2<CR>',                { desc = 'Resize Window Down', silent = true  })
---vim.keymap.set("n", '<left>',               ':vertical resize -2<CR>',       { desc = 'Resize Window Left', silent = true  })
---vim.keymap.set("n", '<right>',              ':vertical resize +2<CR>',       { desc = 'Resize Window Right', silent = true  })
+vim.keymap.set("n", '<up>',                 ':resize -2<CR>',                { desc = 'Resize Window Up', silent = true  })
+vim.keymap.set("n", '<down>',               ':resize +2<CR>',                { desc = 'Resize Window Down', silent = true  })
+vim.keymap.set("n", '<right>',               ':vertical resize -2<CR>',       { desc = 'Resize Window Left', silent = true  })
+vim.keymap.set("n", '<left>',              ':vertical resize +2<CR>',       { desc = 'Resize Window Right', silent = true  })
 
 --[[ Rotate Window Panes ]]
 -----------------------------------------------------
