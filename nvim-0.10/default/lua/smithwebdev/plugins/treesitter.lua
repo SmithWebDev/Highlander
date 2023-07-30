@@ -12,6 +12,7 @@ return {
     'nvim-treesitter/tree-sitter-query',            -- https://github.com/nvim-treesitter/tree-sitter-query
     'windwp/nvim-ts-autotag',                       -- https://github.com/windwp/nvim-ts-autotag
     'nvim-treesitter/nvim-treesitter-context',      -- https://github.com/nvim-treesitter/nvim-treesitter-context
+    'JoosepAlviste/nvim-ts-context-commentstring', -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring
   },
   build = function()
     require('nvim-treesitter.install').update({ with_sync = true })
@@ -50,7 +51,7 @@ return {
       highlight = {
         enable = true,
         disable = {},
-      --  additional_vim_regex_highlighting = { 'org' },
+        --  additional_vim_regex_highlighting = { 'org' },
       },
       endwise = {
         enable = true,
@@ -102,6 +103,9 @@ return {
         },
       },
       autotag = {
+        enable = true
+      },
+      context_commentstring = {
         enable = true
       },
       textsubjects = {
