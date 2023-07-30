@@ -9,6 +9,7 @@ return {
     require('telescope').load_extension('harpoon')
     --require('telescope').load_extension('send_to_harpoon')
   end,
+    -- TODO: Keymap Strategy
   keys = {
     { '<leader>sj', ':Telescope harpoon marks<CR>', desc = 'Show Harpoon Marks (Telescope)'},
     { '<leader>hm', function() require('harpoon.ui').toggle_quick_menu() end, desc = 'View all Harpoon marks'},

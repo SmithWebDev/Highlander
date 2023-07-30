@@ -3,6 +3,7 @@
   "LuaSnip": { "branch": "master", "commit": "e81cbe6004051c390721d8570a4a0541ceb0df10" },
   "Sakura.nvim": { "branch": "master", "commit": "0b56b51fa9fcab0423d2809775d91966837581e6" },
   "ScrollColors": { "branch": "master", "commit": "2ce50b9e0d811456b7627cf81197ea9d68f9e667" },
+  "SnippetGenie": { "branch": "master", "commit": "a043ef98675ac513ee26a1636c861ce6bcc8b8da" },
   "animate.vim": { "branch": "master", "commit": "ca124da441b4d4ea721f33a999d4493e0d0a7a31" },
   "awesome-vim-colorschemes": { "branch": "master", "commit": "4b2787b8894c4a70c42d15c2808d7cf278cb6abb" },
   "base16-nvim": { "branch": "main", "commit": "fd0cd512d63aa70269dbaa87d7948936680b6fea" },

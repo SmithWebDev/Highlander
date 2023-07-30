@@ -19,6 +19,7 @@ return {
       return {'treesitter', 'indent'}
     end
   },
+    -- TODO: Keymap Strategy
   keys = {
     {
       'zR',

@@ -41,6 +41,7 @@ return{
         Operator      = " ",
         TypeParameter = " ",
       },
+    -- TODO: Keymap Strategy
       mappings = {
         ["<esc>"] = actions.close,        -- Close and cursor to original location
         ["q"] = actions.close,

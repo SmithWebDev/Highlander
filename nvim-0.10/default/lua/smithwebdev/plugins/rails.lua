@@ -11,6 +11,7 @@ return {
     },
     config = function ()
 
+    -- TODO: Keymap Strategy
       -- keybindings
       vim.keymap.set('n', '<Tab>rc',     '<cmd>Console!<CR>',                                { desc = 'Open Rails Console New Tmux Window', silent = true  })
       vim.keymap.set('n', '<Tab>rs',     '<cmd>Server!<CR>',                                 { desc = 'Open Rails Server New Tmux Window', silent = true  })

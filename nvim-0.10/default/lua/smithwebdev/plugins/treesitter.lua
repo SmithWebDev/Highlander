@@ -56,6 +56,7 @@ return {
       endwise = {
         enable = true,
       },
+    -- TODO: Keymap Strategy
       textobjects = {
         select = {
           enable = true,
@@ -108,6 +109,7 @@ return {
       context_commentstring = {
         enable = true
       },
+    -- TODO: Keymap Strategy
       textsubjects = {
         enable = true,
         -- prev_selection = '', -- optional keymap to select the previous selection

@@ -9,6 +9,7 @@ return {
     require('which-key').setup({})
     local wk = require("which-key")
 
+    -- TODO: Keymap Strategy
     wk.register({},{ prefix = "<leader>" })
     wk.register({},{ prefix = "<leader<leader>" })
     wk.register({},{ prefix = "<Tab>" })

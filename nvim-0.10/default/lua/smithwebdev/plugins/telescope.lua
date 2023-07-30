@@ -85,6 +85,7 @@ extensions = {
     telescope.load_extension('undo')
     telescope.load_extension('vimwiki')
   end,
+    -- TODO: Keymap Strategy
   keys = {
     {
       '<leader>ff',
