@@ -1,11 +1,12 @@
 return {
   {'vim-scripts/ScrollColors'},        -- https://github.com/vim-scripts/ScrollColors
-  {'ray-x/starry.nvim'}, -- https://github.com/ray-x/starry.nvim
+  {'ray-x/starry.nvim'},               -- https://github.com/ray-x/starry.nvim
   {'yonlu/omni.vim'},                  -- https://github.com/yonlu/omni.vim
   {'flazz/vim-colorschemes'},          --https://github.com/flazz/vim-colorschemes
   {'rafi/awesome-vim-colorschemes'},   --https://github.com/rafi/awesome-vim-colorschemes
   {'numToStr/Sakura.nvim'},            --https://github.com/numToStr/Sakura.nvim
-  --{'hardhackerlabs/themes'},           --https://github.com/hardhackerlabs/themes
+  --{'hardhackerlabs/themes'},         --https://github.com/hardhackerlabs/themes
+  { 'freddiehaddad/base16-nvim' },     -- https://github.com/freddiehaddad/base16-nvim
   {
     'B4mbus/oxocarbon-lua.nvim',       --https://github.com/B4mbus/oxocarbon-lua.nvim
     init = function()
@@ -30,5 +31,6 @@ return {
       transparent = true,
     }
   },
+  { 'ldelossa/vimdark' },                                 -- https://github.com/ldelossa/vimarkd
 }
 
