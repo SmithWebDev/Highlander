@@ -6,7 +6,14 @@ return {
     local neogen = require('neogen')
     neogen.setup({
       enabled = true,
+      input_after_comment = true,
+      snippet_engine = 'luasnip',
       languages = {
+        ruby ={
+          template = {
+            annotation_convention = 'yard'
+          }
+        },
         lua = {
           template = {
             annotation_convention = 'emmylua'
