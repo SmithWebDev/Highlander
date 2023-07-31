@@ -16,7 +16,7 @@ return {
 
       ls.config.set_config {
         history = true,
-        updateevents = "TextChanged, TextChangedI",
+        updateevents = {"TextChanged, TextChangedI"},
         ext_base_prio = 200,
         ext_prio_increase = 1,
         enable_autosnippets = true,
