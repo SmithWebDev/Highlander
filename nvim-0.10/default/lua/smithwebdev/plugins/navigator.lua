@@ -1,12 +1,47 @@
 return {
-  'ray-x/navigator.lua', -- https://github.com/ray-x/navigator.lua
-  dependencies = {
-    'nvim-tree/nvim-web-devicons',
-    { 'ray-x/guihua.lua', build = 'cd lua/fzy && make' },
-    'ray-x/lsp_signature.nvim',
-    { 'neovim/nvim-lspconfig' },
-  },
-  config = function()
-    require 'navigator'.setup()
-  end,
+  --'ray-x/navigator.lua', -- https://github.com/ray-x/navigator.lua
+  --dependencies = {
+  --  'nvim-tree/nvim-web-devicons',
+  --  { 'ray-x/guihua.lua', build = 'cd lua/fzy && make' },
+  --  'ray-x/lsp_signature.nvim',
+  --  'neovim/nvim-lspconfig',
+  --  'nvim-treesitter/nvim-treesitter-refactor',
+  --  "williamboman/mason.nvim",
+  --  "williamboman/mason-lspconfig.nvim",
+  --},
+  --config = function()
+  --  require 'navigator'.setup({
+  --    debug = false,
+  --    width = 0.75,
+  --    height = 0.3,
+  --    preview_height = 0.35,
+  --    border = 'double',
+  --    treesitter_analysis = true,
+  --    transparency = 50,
+  --    lsp_signature_help = true,
+  --    ts_fold = false,
+  --    default_mapping = false, -- *WIP*
+  --    treesitter_navigation = true,
+  --    mason = true
+  --    --code_action = {
+  --    --  enable = true,
+  --    --  sign = true,
+  --    --  sign_priority = 40,
+  --    --  virtual_text = true
+  --    --},
+  --    --code_lens_action = {
+  --    --  enable = true,
+  --    --  sign = true,
+  --    --  sign_priority = 40,
+  --    --  virtual_text = true
+  --    --},
+  --    --format_on_save = true,
+  --    --diagnostic = {
+  --    --  underline = true,
+  --    --  virtual_text = true,
+  --    --  update_in_insert = false,
+  --    --},
+  --    --display_diagnostic_qf = true,
+  --  })
+  --end,
 }
