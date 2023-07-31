@@ -49,23 +49,7 @@ return {
           }
         },
       },
-extensions = {
-    undo = {
-      side_by_side = true,
-      layout_strategy = "vertical",
-      layout_config = {
-        preview_height = 0.8,
-      },
-    },
-  },extensions = {
-    undo = {
-      side_by_side = true,
-      layout_strategy = "vertical",
-      layout_config = {
-        preview_height = 0.8,
-      },
-    },
-  },      extensions = {
+      extensions = {
         undo = {
           side_by_side = true,
           layout_strategy = "vertical",
@@ -73,7 +57,7 @@ extensions = {
             preview_height = 0.8,
           },
         },
-      },
+      }
     })
   end,
   opts = function(_, opts)
@@ -85,7 +69,7 @@ extensions = {
     telescope.load_extension('undo')
     telescope.load_extension('vimwiki')
   end,
-    -- TODO: Keymap Strategy
+  -- TODO: Keymap Strategy
   keys = {
     {
       '<leader>ff',
