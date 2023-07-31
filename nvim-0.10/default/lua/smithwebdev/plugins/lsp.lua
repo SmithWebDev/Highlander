@@ -1,10 +1,11 @@
 return {
---  -- LSP Config
+  --  -- LSP Config
   "neovim/nvim-lspconfig",
 
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    "folke/neodev.nvim",
     'hrsh7th/cmp-nvim-lsp',                -- https://github.com/hrsh7th/cmp-nvim-lsp
   },
   config = function()
@@ -18,6 +19,7 @@ return {
 
     local auto_install_servers = {
       'cssls',
+      'cssmodules_ls',
       'elixirls',
       'emmet_ls',
       'eslint',
@@ -66,6 +68,26 @@ return {
 
     lsp.cssls.setup({
       capabilities = capabilities
+    })
+
+    lsp.cssmodules_ls.setup({
+      on_attach = on_attach,
+      init_options = {
+        camelCase = 'false'
+      }
+    })
+
+    lsp.lua_ls.setup({
+      settings = {
+        Lua = {
+          runtime = { version = "LuaJIT" },
+          diagnostics = { globals = { "vim" } },
+          workspace = vim.api.nvim_get_runtime_file("", true),
+          completion = {
+            callSnippet = "Replace"
+          },
+        },
+      }
     })
 
     for _, auto_install_server in pairs(auto_install_servers) do
