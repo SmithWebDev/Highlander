@@ -73,6 +73,3 @@ conds = require("luasnip.extras.expand_conditions")
 --
 --  table.insert(target_table, snippet) -- insert snippet into appropriate table
 --end                                  --}}}
-
-print('snippets dir accessed!')
-
