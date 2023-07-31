@@ -79,8 +79,6 @@ return {
             luasnip.jump(1)
           elseif neogen.jumpable() then
             neogen.jump_next()
-          elseif has_words_before() then
-            cmp.complete()
           else
             fallback()
           end
@@ -154,8 +152,8 @@ return {
       sources = cmp.config.sources({
         { name = 'path' },
       }, {
-        { name = 'cmdline' },
-      }),
+          { name = 'cmdline' },
+        }),
     })
   end
   --opts = function(_, opts)
