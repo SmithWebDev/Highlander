@@ -72,28 +72,28 @@ return {
       mapping = {
         ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
-        ['<C-j>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.jumpable() then
-            luasnip.jump(1)
-          elseif neogen.jumpable() then
-            neogen.jump_next()
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
-        ['<C-k>'] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable() then
-            luasnip.jump(-1)
-          elseif neogen.jumpable(true) then
-            neogen.jump_prev()
-          else
-            fallback()
-          end
-        end, { 'i', 's' }),
+        --['<C-j>'] = cmp.mapping(function(fallback)
+        --  if cmp.visible() then
+        --    cmp.select_next_item()
+        --  elseif luasnip.jumpable() then
+        --    luasnip.jump(1)
+        --  elseif neogen.jumpable() then
+        --    neogen.jump_next()
+        --  else
+        --    fallback()
+        --  end
+        --end, { 'i', 's' }),
+        --['<C-k>'] = cmp.mapping(function(fallback)
+        --  if cmp.visible() then
+        --    cmp.select_prev_item()
+        --  elseif luasnip.jumpable() then
+        --    luasnip.jump(-1)
+        --  elseif neogen.jumpable(true) then
+        --    neogen.jump_prev()
+        --  else
+        --    fallback()
+        --  end
+        --end, { 'i', 's' }),
         ["<C-e>"] = cmp.mapping({
           i = cmp.mapping.abort(),
           c = cmp.mapping.close(),
