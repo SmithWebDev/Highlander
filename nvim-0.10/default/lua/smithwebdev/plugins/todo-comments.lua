@@ -15,8 +15,6 @@ return {
     vim.keymap.set('n', '<leader>fq',  ':TodoQuickFix<CR>',                         { desc = 'Todo Comments in QuickFixList',        silent = true })
 
 
-
-
     -- keywords = [{'FIX', 'BUG', 'ISSUE'}, 'TODO', 'HACK', 'WARN', 'PERF', 'NOTE', 'TEST']
     vim.keymap.set('n', '<leader>ftf', ':TodoTelescope keywords=FIX,BUG,ISSUE<CR>', { desc = 'Todo Fix/Bug/Issues in Telescope',     silent = true })
     vim.keymap.set('n', '<leader>ftt', ':TodoTelescope keywords=TODO<CR>',          { desc = 'Todos only in Telescope',              silent = true })
