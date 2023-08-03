@@ -1,9 +1,14 @@
----------------------------------------------------------------------------------
-local Quick_Close = vim.api.nvim_create_augroup('Quick_Close', { clear = true })
+--------------------------------------------------------------------------------
+--                                AUTOCOMMANDS                                --
+--------------------------------------------------------------------------------
 
--- close some filetypes with <q>
+--------------------------------------------------------------------------------
+--                          Close filetypes with <q>                          --
+--------------------------------------------------------------------------------
+
+local Quick_Close = vim.api.nvim_create_augroup('Quick_Close', { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-  group = 'Quick_Close',
+  group = Quick_Close,
   pattern = {
     'guihua',
     "PlenaryTestPopup",
@@ -24,6 +29,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 --------------------------------------------------------------------------------
+--                     AutoSave When Leaving Insert Mode                      --
+--------------------------------------------------------------------------------
+
 local AutoSaveGroup = vim.api.nvim_create_augroup('autosave_user_events', { clear = true })
 vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave' }, {
   group = AutoSaveGroup,
@@ -50,6 +58,9 @@ vim.api.nvim_create_autocmd({ 'TextChanged', 'InsertLeave' }, {
   end
 })
 
+------------------------
+--Autoswap Mode (I -> N)--
+------------------------
 vim.api.nvim_create_autocmd({ 'TextChangedI', 'InsertEnter' }, {
   group = AutoSaveGroup,
   callback = function()
@@ -80,6 +91,9 @@ vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWritePre' }, {
 --})
 
 --------------------------------------------------------------------------------
+--                         Cursorline in Normal mode                          --
+--------------------------------------------------------------------------------
+
 local CursorInsertMode = vim.api.nvim_create_augroup('CursorInsertMode', { clear = true })
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'WinEnter' }, {
   callback = function()
@@ -95,17 +109,3 @@ vim.api.nvim_create_autocmd({ 'InsertEnter', 'WinLeave' }, {
   group = CursorInsertMode,
   desc = 'Disable cursorline on insert',
 })
-
---------------------------------------------------------------------------------
---vim.api.nvim_create_autocmd(
---    'BufWritePre', {
---        pattern = '*',
---        desc = 'Create directory if it does not exists',
---        callback = function()
---            local filedir = vim.fn.expand('%:p:h')
---            if vim.fn.isdirectory(filedir) == 0 then
---                vim.fn.mkdir(filedir, 'p')
---            end
---        end
---    }
---)
