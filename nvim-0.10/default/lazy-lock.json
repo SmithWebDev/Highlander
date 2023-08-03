@@ -8,6 +8,7 @@
   "animate.vim": { "branch": "master", "commit": "ca124da441b4d4ea721f33a999d4493e0d0a7a31" },
   "awesome-vim-colorschemes": { "branch": "master", "commit": "4b2787b8894c4a70c42d15c2808d7cf278cb6abb" },
   "base16-nvim": { "branch": "main", "commit": "fd0cd512d63aa70269dbaa87d7948936680b6fea" },
+  "blamer.nvim": { "branch": "master", "commit": "f4eb22a9013642c411725fdda945ae45f8d93181" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-cmdline": { "branch": "main", "commit": "8ee981b4a91f536f52add291594e89fb6645e451" },
   "cmp-emoji": { "branch": "main", "commit": "19075c36d5820253d32e2478b6aaf3734aeaafa0" },
