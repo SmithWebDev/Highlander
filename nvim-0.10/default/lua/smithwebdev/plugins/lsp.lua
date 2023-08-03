@@ -7,6 +7,8 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "folke/neodev.nvim",
     'hrsh7th/cmp-nvim-lsp',                -- https://github.com/hrsh7th/cmp-nvim-lsp
+    'onsails/lspkind.nvim', -- https://github.com/onsails/lspkind.nvim
+    'hrsh7th/nvim-cmp',
   },
   config = function()
     -- Base
@@ -14,6 +16,8 @@ return {
     local mason_lsp = require('mason-lspconfig')
     local lsp = require('lspconfig')
     local cmp_lsp = require('cmp_nvim_lsp')
+    local cmp = require('cmp')
+    local lspkind = require('lspkind')
 
     local signs = {}
 
@@ -65,17 +69,54 @@ return {
     capabilities = cmp_lsp.default_capabilities(capabilities)
     capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+    ------------------------
+    --       CSSLS        --
+    ------------------------
 
     lsp.cssls.setup({
       capabilities = capabilities
     })
 
+    ------------------------
+    --   CSS_Modules_LS   --
+    ------------------------
+
     lsp.cssmodules_ls.setup({
-      on_attach = on_attach,
       init_options = {
         camelCase = 'false'
       }
     })
+
+    ------------------------
+    --    TailwindCSS     --
+    ------------------------
+
+    lsp.tailwindcss.setup({
+      settings = {
+        tailwindCSS = {
+          classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+          lint = {
+            cssConflict = "warning",
+            invalidApply = "error",
+            invalidConfigPath = "error",
+            invalidScreen = "error",
+            invalidTailwindDirective = "error",
+            invalidVariant = "error",
+            recommendedVariantOrder = "warning"
+          },
+          validate = true
+        }
+      },
+      userLanguages = {
+        eelixir = "html-eex",
+        eruby = "erb",
+        ruby = "rb",
+      }
+    })
+
+    ------------------------
+    --       Lua_Ls       --
+    ------------------------
 
     lsp.lua_ls.setup({
       settings = {
@@ -90,12 +131,48 @@ return {
       }
     })
 
-    for _, auto_install_server in pairs(auto_install_servers) do
-      lsp[auto_install_server].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-        setting = server_settings[auto_install_server],
-      })
-    end
+    --for _, auto_install_server in pairs(auto_install_servers) do
+    --lsp[auto_install_server].setup({
+    --  capabilities = capabilities,
+    --  on_attach = on_attach,
+    --  setting = server_settings[auto_install_server],
+    --})
+    --end
+
+    ------------------------
+    --  LSP KIND CONFIG   --
+    ------------------------
+
+    lspkind.init({
+      mode = 'symbol_text',
+      symbol_map = {
+        Text = "󰉿",
+        Method = "󰆧",
+        Function = "󰊕",
+        Constructor = "",
+        Field = "󰜢",
+        Variable = "󰀫",
+        Class = "󰠱",
+        Interface = "",
+        Module = "",
+        Property = "󰜢",
+        Unit = "󰑭",
+        Value = "󰎠",
+        Enum = "",
+        Keyword = "󰌋",
+        Snippet = "",
+        Color = "󰏘",
+        File = "󰈙",
+        Reference = "󰈇",
+        Folder = "󰉋",
+        EnumMember = "",
+        Constant = "󰏿",
+        Struct = "󰙅",
+        Event = "",
+        Operator = "󰆕",
+        TypeParameter = "",
+      }
+    })
+
   end
 }
