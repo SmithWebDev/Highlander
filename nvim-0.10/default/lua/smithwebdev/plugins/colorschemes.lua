@@ -28,9 +28,10 @@ return {
       },
       sidebars = {},
       terminal_colors = true,
-      transparent = true,
+      transparent = false,
     }
   },
   { 'ldelossa/vimdark' },                                 -- https://github.com/ldelossa/vimarkd
+  --vim.cmd.colorscheme 'aquamarine'
 }
 
