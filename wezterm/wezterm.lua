@@ -10,30 +10,56 @@ wezterm.on('update-right-status', function(window, pane)
   window:set_right_status(name or '')
 end)
 
-wezterm.on("gui-startup", function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
+wezterm.on('update-right-status', function(window, pane)
+  -- "Wed Mar 3 08:14"
+  local date = wezterm.strftime '%a %b %-d %H:%M '
 
-  window:gui_window():maximize()
-
-  local bot0 = pane:split { direction = "Bottom", size = 0.25 }
-
+  window:set_right_status(wezterm.format {
+    { Text = wezterm.nerdfonts.fa_clock_o .. ' ' .. date },
+  })
 end)
- 
+
+--wezterm.on("gui-startup", function(cmd)
+--  local tab, pane, window = mux.spawn_window(cmd or {})
+--
+--  window:gui_window():maximize()
+--
+--  local bot0 = pane:split { direction = "Bottom", size = 0.25 }
+--
+--end)
+
 return {
   adjust_window_size_when_changing_font_size = false,
   color_scheme = 'Dark Violet (base16)',
-  font = wezterm.font({
-    family = 'Fira Code iScript',
-    harfbuzz_features = {
-      "cv02",
-      "cv24",
-      'cv26',
-      'cv27',
-      'cv30',
-      'ss03',
-      'ss05',
-      'ss07',
-      'ss09',
+  font = wezterm.font_with_fallback({
+    {
+      family = 'FiraCode Nerd Font',
+    },
+    {
+      family = "Fira Code iScript",
+      harfbuzz_features = {
+        "cv02",
+        "cv13",
+        "cv14",
+        "cv16",
+        "cv19",
+        "cv20",
+        "cv22",
+        "cv23",
+        "cv24",
+        "cv25",
+        'cv26',
+        'cv27',
+        'cv28',
+        'cv30',
+        'cv31',
+        'cv32',
+        'ss03',
+        'ss04',
+        'ss05',
+        'ss07',
+        'ss09',
+      },
     },
   }),
   font_rules = {
@@ -46,7 +72,7 @@ return {
       }
     }
   },
-  font_size = 28.0,
+  font_size = 14.0,
 
   leader = { key = 'Space', mods = 'CTRL', timeout_milliseconds = 1500 },
 
@@ -76,7 +102,7 @@ return {
     { key = '9',  mods = 'LEADER', action = wezterm.action{ActivateTab=8} },
 
     -- close tabs
-    { key = 'x',  mods = 'LEADER', action = wezterm.action.CloseCurrentTab  { confirm = true } },
+    { key = 'X',  mods = 'LEADER', action = wezterm.action.CloseCurrentTab  { confirm = true } },
 
     -- PANE CONTROLS (MAXIMIZE, NAVIGATION, RESIZE, SELECT, SPLIT, CLOSE)
 
@@ -105,14 +131,26 @@ return {
     { key = 'w',  mods = 'ALT',    action = wezterm.action.PaneSelect },
 
     -- split panes
-    { key = '\\', mods = 'LEADER', action = wezterm.action.SplitHorizontal {domain = 'CurrentPaneDomain'}, },
+    { key = '|', mods = 'LEADER', action = wezterm.action.SplitHorizontal {domain = 'CurrentPaneDomain'}, },
     { key = '-',  mods = 'LEADER', action = wezterm.action.SplitVertical {domain = 'CurrentPaneDomain'},   },
+    { key = 'b',  mods = 'LEADER', action = wezterm.action.SplitPane {
+      direction = 'Down',
+      size = { Percent = 20 }
+    },   },
+    { key = 'q',  mods = 'LEADER', action = wezterm.action.SplitPane({
+      direction = 'Right',
+      size = { Percent = 25 }
+    }) },
+    { key = 'h',  mods = 'LEADER', action = wezterm.action.SplitPane({
+      direction = 'Right',
+      size = { Percent = 50 }
+    }) },
 
     -- toggle maximize pane
     { key = 'm',  mods = 'ALT',    action = wezterm.action.TogglePaneZoomState },
 
     -- close panes
-    { key = 'q',  mods = 'LEADER', action = wezterm.action.CloseCurrentPane  { confirm = true } },
+    { key = 'x',  mods = 'LEADER', action = wezterm.action.CloseCurrentPane  { confirm = true } },
 
     -- END PANE CONTROLS
   },
@@ -136,20 +174,20 @@ return {
       { key = 'Escape', action = 'PopKeyTable' },
       { key = 'x',      action = wezterm.action.CloseCurrentTab  { confirm = true } },
     },
---   [Remove from key table is activating] -- active pane
---   [Remove from key table is activating] --{ key = 'w',  mods = 'LEADER', action = wezterm.action.ActivateKeyTable { name = 'activate_pane', timeout_milliseconds = 1500 } },
---    --activate_pane = {
---    --  { key = 'h',      action = wezterm.action.ActivatePaneDirection 'Left' },
---    --  { key = 'j',      action = wezterm.action.ActivatePaneDirection 'Down' },
---    --  { key = 'k',      action = wezterm.action.ActivatePaneDirection 'Up' },
---    --  { key = 'l',      action = wezterm.action.ActivatePaneDirection 'Right' },
---    --},
+    --   [Remove from key table is activating] -- active pane
+    --   [Remove from key table is activating] --{ key = 'w',  mods = 'LEADER', action = wezterm.action.ActivateKeyTable { name = 'activate_pane', timeout_milliseconds = 1500 } },
+    --    --activate_pane = {
+    --    --  { key = 'h',      action = wezterm.action.ActivatePaneDirection 'Left' },
+    --    --  { key = 'j',      action = wezterm.action.ActivatePaneDirection 'Down' },
+    --    --  { key = 'k',      action = wezterm.action.ActivatePaneDirection 'Up' },
+    --    --  { key = 'l',      action = wezterm.action.ActivatePaneDirection 'Right' },
+    --    --},
   },
   tab_bar_at_bottom = true,
   tab_max_width = 60,
   --term = 'wezterm',
   --use_fancy_tab_bar = false,
---  window_background_image = '$HOME/Personal Media/Images/desktop/raven_by_z__ed_ddmeskm-fullview.jpg',
+  --  window_background_image = '$HOME/Personal Media/Images/desktop/raven_by_z__ed_ddmeskm-fullview.jpg',
   window_background_opacity = 0.6,
   window_frame = {
     font_size = 16.0,
