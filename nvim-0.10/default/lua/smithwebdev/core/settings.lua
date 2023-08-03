@@ -64,7 +64,7 @@ vim.opt.conceallevel   = 3
 vim.opt.hidden         = true
 vim.opt.signcolumn     = 'yes'
 vim.opt.cmdheight      = 0
-vim.opt.guifont        = 'FiraCode'
+vim.opt.guifont        = 'FiraCode Nerd Font'
 vim.opt.pumheight      = 10
 vim.opt.pumblend       = 25
 vim.opt.splitbelow     = true
@@ -81,4 +81,5 @@ if vim.fn.has("nvim-0.9.0") == 1 then
   vim.opt.shortmess:append({ C = true})
 end
 
-print('Settings connected')
+--vim.cmd.colorscheme 'oxocarbon-lua'
+vim.cmd 'colorscheme tokyonight'
