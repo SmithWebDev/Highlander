@@ -3,6 +3,7 @@ return {
 
   dependencies = {
     'saadparwaiz1/cmp_luasnip',            -- https://github.com/saadparwaiz1/cmp_luasnip
+    'L3MON4D3/cmp-luasnip-choice',         -- https://github.com/L3MON4D3/cmp-luasnip-choice
     'hrsh7th/cmp-buffer',                  -- https://github.com/hrsh7th/cmp-buffer
     'jcha0713/cmp-tw2css',                 -- https://github.com/jcha0713/cmp-tw2css
     'hrsh7th/cmp-emoji',                   -- https://github.com/hrsh7th/cmp-emoji
@@ -11,9 +12,10 @@ return {
     'hrsh7th/cmp-nvim-lsp',                -- https://github.com/hrsh7th/cmp-nvim-lsp
     'hrsh7th/cmp-nvim-lsp-signature-help', -- https://github.com/hrsh7th/cmp-nvim-lsp-signature-help
     'hrsh7th/cmp-nvim-lua',                -- https://github.com/hrsh7th/cmp-nvim-lua
+    'pontusk/cmp-sass-variables',          -- https://github.com/pontusk/cmp-sass-variables
     'wassimk/cmp-rails-fixture-names',     -- https://github.com/wassimk/cmp-rails-fixture-names
     'wassimk/cmp-rails-fixture-types',     -- https://github.com/wassimk/cmp-rails-fixture-types
-    'wassimk/cmp-feature-flipper', -- https://github.com/wassimk/cmp-feature-flipper
+    'wassimk/cmp-feature-flipper',         -- https://github.com/wassimk/cmp-feature-flipper
     'danymat/neogen',                      -- https://github.com/danymat/neogen
     'honza/vim-snippets',                  -- https://github.com/honza/vim-snippets
     'rafamadriz/friendly-snippets',        -- https://github.com/rafamadriz/friendly-snippets
@@ -25,9 +27,14 @@ return {
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local neogen = require("neogen")
+    local luasnip_choice = require('cmp_luasnip_choice')
 
     local cmp_autopairs = require('nvim-autopairs.completion.cmp')
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
+
+    luasnip_choice.setup({
+      auto_open = true,
+    })
 
     require('nvim-autopairs').setup({
       disable_filetype = { "TelescopePrompt", "guihua", "guihua_rust", "clap_input" }
@@ -35,31 +42,31 @@ return {
 
     --   פּ ﯟ   some other good icons
     local kind_icons = {
-      Text = "",
-      Method = "m",
-      Function = "",
-      Constructor = "",
-      Field = "",
-      Variable = "",
-      Class = "",
+      Text = "󰉿",
+      Method = "󰆧",
+      Function = "󰊕",
+      Constructor = "",
+      Field = "󰜢",
+      Variable = "󰀫",
+      Class = "󰠱",
       Interface = "",
       Module = "",
-      Property = "",
-      Unit = "",
-      Value = "",
+      Property = "󰜢",
+      Unit = "󰑭",
+      Value = "󰎠",
       Enum = "",
-      Keyword = "",
-      Snippet = "",
-      Color = "",
-      File = "",
-      Reference = "",
-      Folder = "",
+      Keyword = "󰌋",
+      Snippet = "",
+      Color = "󰏘",
+      File = "󰈙",
+      Reference = "󰈇",
+      Folder = "󰉋",
       EnumMember = "",
-      Constant = "",
-      Struct = "",
+      Constant = "󰏿",
+      Struct = "󰙅",
       Event = "",
-      Operator = "",
-      TypeParameter = "",
+      Operator = "󰆕",
+      TypeParameter = "",
     }
     -- find more here: https://www.nerdfonts.com/cheat-sheet
 
@@ -72,28 +79,28 @@ return {
       mapping = {
         ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
         ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
-        --['<C-j>'] = cmp.mapping(function(fallback)
-        --  if cmp.visible() then
-        --    cmp.select_next_item()
-        --  elseif luasnip.jumpable() then
-        --    luasnip.jump(1)
-        --  elseif neogen.jumpable() then
-        --    neogen.jump_next()
-        --  else
-        --    fallback()
-        --  end
-        --end, { 'i', 's' }),
-        --['<C-k>'] = cmp.mapping(function(fallback)
-        --  if cmp.visible() then
-        --    cmp.select_prev_item()
-        --  elseif luasnip.jumpable() then
-        --    luasnip.jump(-1)
-        --  elseif neogen.jumpable(true) then
-        --    neogen.jump_prev()
-        --  else
-        --    fallback()
-        --  end
-        --end, { 'i', 's' }),
+        ['<C-j>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif luasnip.jumpable() then
+            luasnip.jump(1)
+          elseif neogen.jumpable() then
+            neogen.jump_next()
+          else
+            fallback()
+          end
+        end, { 'i', 's' }),
+        ['<C-k>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable() then
+            luasnip.jump(-1)
+          elseif neogen.jumpable(true) then
+            neogen.jump_prev()
+          else
+            fallback()
+          end
+        end, { 'i', 's' }),
         ["<C-e>"] = cmp.mapping({
           i = cmp.mapping.abort(),
           c = cmp.mapping.close(),
@@ -106,29 +113,32 @@ return {
         -- ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       },
       formatting = {
-        fields = { 'kind', 'abbr', 'menu' },
-        format = function(entry, vim_item)
-          -- Kind icons
-          vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
-          -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-          vim_item.menu = ({
-            luasnip = 'LuaSnip',
-            nvim_lua = '[NVim Lua]',
-            nvim_lsp = '[LSP]',
-            tw2css = '[Tailwind]',
-            buffer = '[Buffer]',
-            path = '[Path]',
-          })[entry.source.name]
-          return vim_item
-        end,
+      fields = { 'kind', 'abbr', 'menu' },
+      format = function(entry, vim_item)
+        -- Kind icons
+        vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
+        -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+        vim_item.menu = ({
+          luasnip = '[LuaSnip]',
+          luasnip_choice = '[LuaSnip_Choice]',
+          nvim_lua = '[NVim Lua]',
+          nvim_lsp = '[LSP]',
+          tw2css = '[Tailwind]',
+          buffer = '[Buffer]',
+          path = '[Path]',
+        })[entry.source.name]
+        return vim_item
+      end,
       },
       sources = {
         { name = 'luasnip' },
+        { name = 'luasnip_choice' },
         { name = 'nvim_lsp' },
         { name = 'nvim_lua' },
+        { name = 'nvim_lsp_signature_help' },
         { name = 'path' },
         { name = 'cmp-tw2css' },
-        { name = 'nvim_lsp_signature_help' },
+        { name = 'cmp-sass-variables' },
         { name = 'cmp-feature-flipper' },
         { name = 'rails-fixture-names' },
         { name = 'rails-fixture-types' },
