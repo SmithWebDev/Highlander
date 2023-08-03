@@ -41,9 +41,11 @@ return {
       ls.filetype_extend("ruby", { "eruby", 'rspec' })
       ls.filetype_extend("vimwiki", { "markdown" })
       ls.filetype_extend("markdown", { "vimwiki" })
-      --[[ keybinds ]]
-      --
-      --------------------------------------------------------------------------------
+
+      ------------------------
+      --      Keymaps       --
+      ------------------------
+
       vim.keymap.set({ "i", "s" }, "<C-l>", function()
         if ls.choice_active() then
           ls.change_choice(1)
