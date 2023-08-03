@@ -7,7 +7,7 @@ return {
   event = 'VeryLazy',
   config = function()
     require('telescope').load_extension('harpoon')
-    --require('telescope').load_extension('send_to_harpoon')
+    require('telescope').load_extension('send_to_harpoon')
   end,
     -- TODO: Keymap Strategy
   keys = {
