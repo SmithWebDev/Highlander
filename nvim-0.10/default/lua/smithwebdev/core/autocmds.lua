@@ -80,8 +80,16 @@ vim.api.nvim_create_autocmd({ 'TextChangedI', 'InsertEnter' }, {
 
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWritePre' }, {
   pattern = '*',
-  command = '%s/\\s\\+$//e',
-  group = AutoSaveGroup
+  group = AutoSaveGroup,
+  callback = function ()
+    local ignorelist = {
+      'markdown',
+    }
+    if vim.bo.filetype ~= ignorelist then
+      return
+    end
+    vim.cmd '%s/\\s\\+$//e'
+  end
 })
 
 --vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufWritePre' }, {
