@@ -188,7 +188,7 @@ return {
   --term = 'wezterm',
   --use_fancy_tab_bar = false,
   --  window_background_image = '$HOME/Personal Media/Images/desktop/raven_by_z__ed_ddmeskm-fullview.jpg',
-  window_background_opacity = 0.6,
+  window_background_opacity = 0.4,
   window_frame = {
     font_size = 16.0,
   },

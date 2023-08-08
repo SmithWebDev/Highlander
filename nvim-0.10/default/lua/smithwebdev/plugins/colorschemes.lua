@@ -6,6 +6,7 @@ return {
   {'rafi/awesome-vim-colorschemes'},   --https://github.com/rafi/awesome-vim-colorschemes
   {'numToStr/Sakura.nvim'},            --https://github.com/numToStr/Sakura.nvim
   --{'hardhackerlabs/themes'},         --https://github.com/hardhackerlabs/themes
+  'tpope/vim-vividchalk', -- https://github.com/tpope/vim-vividchalk
   { 'freddiehaddad/base16-nvim' },     -- https://github.com/freddiehaddad/base16-nvim
   {
     'B4mbus/oxocarbon-lua.nvim',       --https://github.com/B4mbus/oxocarbon-lua.nvim
@@ -28,7 +29,7 @@ return {
       },
       sidebars = {},
       terminal_colors = true,
-      transparent = false,
+      transparent = true,
     }
   },
   { 'ldelossa/vimdark' },                                 -- https://github.com/ldelossa/vimarkd
