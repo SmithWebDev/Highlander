@@ -32,7 +32,7 @@ return {
 
 
       --require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/smithwebdev/snippets/" })
-      require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/snippets/" })
+      require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/smithwebdev/snippets/" })
       require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/smithwebdev/utilities/" })
 
       ls.filetype_extend("all", { '_' })
