@@ -6,12 +6,13 @@ return {
       'christoomey/vim-rfactory',                     -- https://github.com/christoomey/vim-rfactory
       'tpope/vim-endwise',                            -- https://github.com/tpope/vim-endwise
       'tpope/vim-dispatch',                           -- https://github.com/tpope/vim-dispatch
+      'tpope/vim-bundler', -- https://github.com/tpope/vim-bundler
       'tpope/vim-projectionist',                      -- https://github.com/tpope/vim-projectionist
       'jgdavey/vim-blockle',                          -- https://github.com/gdavey/vim-blockle
     },
     config = function ()
 
-    -- TODO: Keymap Strategy
+      -- TODO: Keymap Strategy
       -- keybindings
       vim.keymap.set('n', '<Tab>rc',     '<cmd>Console!<CR>',                                { desc = 'Open Rails Console New Tmux Window', silent = true  })
       vim.keymap.set('n', '<Tab>rs',     '<cmd>Server!<CR>',                                 { desc = 'Open Rails Server New Tmux Window', silent = true  })
