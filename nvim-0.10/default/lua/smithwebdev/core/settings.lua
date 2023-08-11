@@ -81,5 +81,5 @@ if vim.fn.has("nvim-0.9.0") == 1 then
   vim.opt.shortmess:append({ C = true})
 end
 
-vim.cmd.colorscheme 'oxocarbon-lua'
---vim.cmd 'colorscheme tokyonight'
+--vim.cmd.colorscheme 'oxocarbon-lua'
+vim.cmd 'colorscheme tokyonight'
