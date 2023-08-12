@@ -37,7 +37,6 @@ return {
         before = "", -- "fg" or "bg" or empty
         keyword = "wide", -- "fg", "bg", "wide", "wide_bg", "wide_fg" or empty. (wide and wide_bg is the same as bg, but will also highlight surrounding characters, wide_fg acts accordingly but with fg)
         after = "fg", -- "fg" or "bg" or empty
-        --pattern = [[.<(KEYWORDS)\s:]], -- pattern or table of patterns, used for highlighting (vim regex)
         comments_only = true, -- uses treesitter to match keywords in comments only
         max_line_len = 400, -- ignore lines longer than this
         exclude = {}, -- list of file types to exclude highlighting
@@ -85,6 +84,7 @@ return {
     vim.keymap.set('n', '<leader>ftf', ':TodoTelescope keywords=FIX,BUG,ISSUE<CR>', { desc = 'Todo Fix/Bug/Issues in Telescope',     silent = true })
     vim.keymap.set('n', '<leader>ftt', ':TodoTelescope keywords=TODO<CR>',          { desc = 'Todos only in Telescope',              silent = true })
     vim.keymap.set('n', '<leader>fth', ':TodoTelescope keywords=HACK<CR>',          { desc = 'Todo Hacks in Telescope',              silent = true })
+    vim.keymap.set('n', '<leader>fti', ':TodoTelescope keywords=INFO<CR>',          { desc = 'Todo Info in Telescope',              silent = true })
     vim.keymap.set('n', '<leader>ftw', ':TodoTelescope keywords=WARN<CR>',          { desc = 'Todo Warnings in Telescope',           silent = true })
     vim.keymap.set('n', '<leader>ftp', ':TodoTelescope keywords=PERF<CR>',          { desc = 'Todo Perf in Telescope',               silent = true })
     vim.keymap.set('n', '<leader>ftn', ':TodoTelescope keywords=NOTE<CR>',          { desc = 'Todo Notes in Telescope',              silent = true })
@@ -93,6 +93,7 @@ return {
     vim.keymap.set('n', '<leader>fqf', ':TodoQuickFix keywords=FIX,BUG,ISSUE<CR>',  { desc = 'Todo Fix/Bug/Issues in Quickfix List', silent = true })
     vim.keymap.set('n', '<leader>fqt', ':TodoQuickFix keywords=TODO<CR>',           { desc = 'Todos only in Quickfix List',          silent = true })
     vim.keymap.set('n', '<leader>fqh', ':TodoQuickFix keywords=HACK<CR>',           { desc = 'Todo Hacks in Quickfix List',          silent = true })
+    vim.keymap.set('n', '<leader>fqi', ':TodoQuickFix keywords=INFO<CR>',           { desc = 'Todo Info in Quickfix List',          silent = true })
     vim.keymap.set('n', '<leader>fqw', ':TodoQuickFix keywords=WARN<CR>',           { desc = 'Todo Warnings in Quickfix List',       silent = true })
     vim.keymap.set('n', '<leader>fqp', ':TodoQuickFix keywords=PERF<CR>',           { desc = 'Todo Perf in Quickfix List',           silent = true })
     vim.keymap.set('n', '<leader>fqn', ':TodoQuickFix keywords=NOTE<CR>',           { desc = 'Todo Notes in Quickfix List',          silent = true })
