@@ -9,12 +9,14 @@ return {
     'hrsh7th/cmp-nvim-lsp',                -- https://github.com/hrsh7th/cmp-nvim-lsp
     'onsails/lspkind.nvim', -- https://github.com/onsails/lspkind.nvim
     'hrsh7th/nvim-cmp',
+    'moberst/lsp_lines', -- https://github.com/moberst/lsp_lines
   },
   config = function()
     -- Base
     local mason = require('mason')
     local mason_lsp = require('mason-lspconfig')
     local lsp = require('lspconfig')
+    local lsp_lines = require('lsp_lines')
     local cmp_lsp = require('cmp_nvim_lsp')
     local cmp = require('cmp')
     local lspkind = require('lspkind')
@@ -38,6 +40,11 @@ return {
       'tsserver',
       'yamlls',
     }
+
+    lsp_lines.setup()
+    vim.diagnostic.config({
+      virtual_text = false
+    })
 
     -- TODO: Keymap Strategy
     local on_attach = function(client, bufnr)
