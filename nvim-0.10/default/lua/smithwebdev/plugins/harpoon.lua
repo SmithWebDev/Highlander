@@ -9,10 +9,11 @@ return {
     require('telescope').load_extension('harpoon')
     --require('telescope').load_extension('send_to_harpoon')
   end,
+
     -- TODO: Keymap Strategy
   keys = {
     { '<leader>sj', ':Telescope harpoon marks<CR>', desc = 'Show Harpoon Marks (Telescope)'},
-    { '<leader>hm', function() require('harpoon.ui').toggle_quick_menu() end, desc = 'View all Harpoon marks'},
+    { '<leader>hh', function() require('harpoon.ui').toggle_quick_menu() end, desc = 'View all Harpoon marks'},
     { '<leader>hf', function() require('harpoon.mark').add_file() end, desc = 'Add files to Harpoon'},
     { '<leader>h1', function() require("harpoon.ui").nav_file(1) end, desc = 'Move to Harpoon mark 1' },
     { '<leader>h2', function() require("harpoon.ui").nav_file(2) end, desc = 'Move to Harpoon mark 2' },
