@@ -93,6 +93,16 @@ vim.keymap.set("n", '<Tab>to', '<C-w>T', { desc = 'Open File In New Tab', silent
 vim.keymap.set("n", '<Tab>t%', '<C-w>T', { desc = 'Open File In New Tab', silent = true })
 vim.keymap.set("n", '<Tab>tt', ':tabs', { desc = 'Show Tab List', silent = true })
 
+--[[ Terminal Window Navigation ]]
+-------------------------------------------------------
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], { desc = '', silent = true})
+vim.keymap.set('t', 'jk', [[<C-\><C-n>]], { desc = '', silent = true})
+vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], { desc = '', silent = true})
+vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], { desc = '', silent = true})
+vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], { desc = '', silent = true})
+vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], { desc = '', silent = true})
+vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], { desc = '', silent = true})
+
 --[[ Window Navigation ]]
 -------------------------------------------------------
 vim.keymap.set("n", '<C-h>', '<C-w>h', { desc = 'Navigate Left', silent = true })
