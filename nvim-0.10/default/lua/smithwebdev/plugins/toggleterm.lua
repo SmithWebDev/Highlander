@@ -33,34 +33,19 @@ return {
     local Terminal = require('toggleterm.terminal').Terminal
     local bin_dev = Terminal:new({
       cmd = 'bin/dev',
-      hidden = true,
-      direction = 'vertical',
-      count = 1,
-      on_open = function(term)
-        vim.cmd("startinsert!")
-        vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
-        vim.api.nvim_buf_set_keymap(term.bufnr, 'n', '<esc>', '<esc>', { noremap = true, silent = true })
-      end
-    })
-
-    local rails_console = Terminal:new({
-      cmd = 'rails console',
-      hidden = true,
       direction = 'vertical',
       count = 2,
       on_open = function(term)
         vim.cmd("startinsert!")
         vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
         vim.api.nvim_buf_set_keymap(term.bufnr, 'n', '<esc>', '<esc>', { noremap = true, silent = true })
-      end
+      end,
     })
 
-    local spotify_player = Terminal:new({
-      cmd = 'spotify_player',
-      hidden = true,
-      direction = 'horizontal',
-      count = 4,
-      width = 90,
+    local rails_console = Terminal:new({
+      cmd = 'rails console',
+      direction = 'vertical',
+      count = 3,
       on_open = function(term)
         vim.cmd("startinsert!")
         vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
@@ -68,11 +53,22 @@ return {
       end
     })
 
+    --local dev = Terminal:new({
+    --  cmd = 'bin/dev',
+    --  direction = 'horizontal',
+    --  count = 5,
+    --  width = 90,
+    --  on_open = function(term)
+    --    vim.cmd("startinsert!")
+    --    vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
+    --    vim.api.nvim_buf_set_keymap(term.bufnr, 'n', '<esc>', '<esc>', { noremap = true, silent = true })
+    --  end
+    --})
+
     local git_dash = Terminal:new({
       cmd = 'gh dash',
-      hidden = true,
       direction = 'tab',
-      count = 3,
+      count = 4,
       on_open = function(term)
         vim.cmd("startinsert!")
         vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
@@ -93,17 +89,33 @@ return {
       rails_console:toggle()
     end
 
-    function _spotify_player_toggle()
-      spotify_player:toggle()
-    end
+    --function _dev_toggle()
+    --  dev:spawn()
+    --end
 
 
     -- TODO: Keymap Strategy
-    -- keybindings
+
+    -- Numbered keybindings
+    vim.keymap.set('n', '<leader>t1', ':1ToggleTerm<CR>', { desc = 'Toggle Terminal #1', silent = true })
+    vim.keymap.set('n', '<leader>t2', ':2ToggleTerm<CR>', { desc = 'Toggle Terminal #2', silent = true })
+    vim.keymap.set('n', '<leader>t3', ':3ToggleTerm<CR>', { desc = 'Toggle Terminal #3', silent = true })
+    vim.keymap.set('n', '<leader>t4', ':4ToggleTerm<CR>', { desc = 'Toggle Terminal #4', silent = true })
+    vim.keymap.set('n', '<leader>t5', ':5ToggleTerm<CR>', { desc = 'Toggle Terminal #5', silent = true })
+    vim.keymap.set('n', '<leader>t6', ':6ToggleTerm<CR>', { desc = 'Toggle Terminal #6', silent = true })
+    vim.keymap.set('n', '<leader>t7', ':7ToggleTerm<CR>', { desc = 'Toggle Terminal #7', silent = true })
+    vim.keymap.set('n', '<leader>t8', ':8ToggleTerm<CR>', { desc = 'Toggle Terminal #8', silent = true })
+    vim.keymap.set('n', '<leader>t9', ':9ToggleTerm<CR>', { desc = 'Toggle Terminal #9', silent = true })
+
+    -- function keybindings
     vim.keymap.set('n', '<leader>tbd', '<cmd>lua _bin_dev_toggle()<CR>', { desc = 'Custom Terminal for Bin/Dev', noremap = true, silent = true })
     vim.keymap.set('n', '<leader>tgd', '<cmd>lua _git_dash_toggle()<CR>', { desc = 'Custom Terminal for GH Dash', noremap = true, silent = true })
     vim.keymap.set('n', '<leader>trc', '<cmd>lua _rails_console_toggle()<CR>', { desc = 'Custom Terminal for Rails Console', noremap = true, silent = true })
-    vim.keymap.set('n', '<leader>tsp', '<cmd>lua _spotify_player_toggle()<CR>', { desc = 'Custom Terminal for Spotify_Player', noremap = true, silent = true })
+    --vim.keymap.set('n', '<leader>tsd', '<cmd>lua _dev_toggle()<CR>', { desc = 'Spawn Terminal for Bin/Dev', noremap = true, silent = true })
+
+    -----------------------------
+    --Update Statusline w Term --
+    -----------------------------
+    vim.opt.statusline = '%{&ft == "toggleterm" ? "terminal (".b:toggle_number.")" : ""}'
   end
 }
---
