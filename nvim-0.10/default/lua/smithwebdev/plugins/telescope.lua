@@ -77,20 +77,40 @@ return {
       desc = 'Telescope Find Files'
     },
     {
+      '<leader>fF',
+      function() require('telescope.builtin').find_files({hidden=true}) end,
+      desc = 'Telescope Find Files'
+    },
+    {
+      '<leader>fF',
+      function() require('telescope.builtin').find_files({hidden=true}) end,
+      desc = 'Telescope Find Files'
+    },
+    {
+      '<leader>fF',
+      function() require('telescope.builtin').find_files({hidden=true}) end,
+      desc = 'Telescope Find Files'
+    },
+    {
       '<leader>fR', -- rails rails_related_files
       ':Telescope rails_related_files',
       desc = 'Telescope Rails Related Files',
+    },
+    {
+      '<leader>sh', -- luasnip
+      ':Telescope help_tags<CR>',
+      desc = 'Telescope LuaSnip',
     },
     {
       '<leader>sl', -- luasnip
       ':Telescope luasnip<CR>',
       desc = 'Telescope LuaSnip',
     },
-    {
-      "<leader>sp",
-      function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
-      desc = "Find Plugin File",
-    },
+    --{
+    --  "<leader>sp",
+    --  function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+    --  desc = "Find Plugin File",
+    --},
     --{
     --  '<leader>su', -- undo list
     --  ':Telescope undo,
