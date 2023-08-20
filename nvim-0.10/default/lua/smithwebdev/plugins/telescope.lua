@@ -102,6 +102,11 @@ return {
       desc = 'Telescope LuaSnip',
     },
     {
+      '<leader>sk', -- keymaps
+      ':Telescope keymaps<CR>',
+      desc = 'Telescope Keymaps',
+    },
+    {
       '<leader>sl', -- luasnip
       ':Telescope luasnip<CR>',
       desc = 'Telescope LuaSnip',
