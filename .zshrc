@@ -86,7 +86,9 @@ alias update_neovim='brew uninstall neovim && brew install neovim --HEAD'
 # ----------------------------
 
 #---- Git Status
+alias gi='git init'
 alias gs='git status'
+alias gcob='git checkout -b'
 
 #     Rails
 # ----------------------------
