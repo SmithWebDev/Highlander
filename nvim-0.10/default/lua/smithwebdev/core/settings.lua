@@ -4,7 +4,7 @@
 ---[[---------------------------------------]]---
 
 --[[ Completion Options ]]--
-vim.opt.completeopt    = 'menu,menuone,noselect'
+vim.opt.completeopt    = 'menu,menuone,preview,noselect'
 vim.opt.shortmess      = 'csa'   --Adjust short system messages
 -- vim.opt.updatetime = 2000
 vim.opt.timeout        = true
@@ -82,4 +82,4 @@ if vim.fn.has("nvim-0.9.0") == 1 then
 end
 
 --vim.cmd.colorscheme 'oxocarbon-lua'
-vim.cmd 'colorscheme tokyonight'
+--vim.cmd 'colorscheme tokyonight'
