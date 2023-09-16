@@ -6,10 +6,10 @@ return {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "folke/neodev.nvim",
-    'hrsh7th/cmp-nvim-lsp',                -- https://github.com/hrsh7th/cmp-nvim-lsp
-    'onsails/lspkind.nvim', -- https://github.com/onsails/lspkind.nvim
+    'hrsh7th/cmp-nvim-lsp',              -- https://github.com/hrsh7th/cmp-nvim-lsp
+    'onsails/lspkind.nvim',              -- https://github.com/onsails/lspkind.nvim
     'hrsh7th/nvim-cmp',
-    'moberst/lsp_lines', -- https://github.com/moberst/lsp_lines
+    'moberst/lsp_lines',                 -- https://github.com/moberst/lsp_lines
   },
   config = function()
     -- Base
@@ -180,6 +180,5 @@ return {
         TypeParameter = "",
       }
     })
-
   end
 }
