@@ -2,42 +2,46 @@
 return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
+    'nvim-lua/plenary.nvim',
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    'nvim-tree/nvim-web-devicons',
     'benfowler/telescope-luasnip.nvim',             -- https://github.com/benfowler/telescope-luasnip.nvim
     'erlingur/telescope-rails-related-files',       -- https://github.com/erlingur/telescope-rails-related-files
     'ElPiloto/telescope-vimwiki.nvim',              -- https://github.com/ElPiloto/telescope-vimwiki.nvim
     'xiyaowong/telescope-octo-commands.nvim',       -- https://github.com/xiyaowong/telescope-octo-commands.nvim
     'asbjornhaland/telescope-send-to-harpoon.nvim', -- https://github.com/asbjornhaland/telescope-send-to-harpoon.nvim
-    'debugloop/telescope-undo.nvim', -- https://github.com/debugloop/telescope-undo.nvim
+    'debugloop/telescope-undo.nvim',                -- https://github.com/debugloop/telescope-undo.nvim
   },
   config = function()
     local telescope = require("telescope")
+    local actions = require('telescope.actions')
     require('telescope').setup({
       defaults = {
-        layout_config = { prompt_position = 'bottom' },
-        layout_strategy = 'horizontal',
-        sorting_strategy = 'descending',
+        --layout_config = { prompt_position = 'bottom' },
+        --layout_strategy = 'horizontal',
+        --sorting_strategy = 'descending',
         mappings = {
           ['i'] = {
-            ['<c-h>'] = telescope.extensions.send_to_harpoon.actions.send_selected_to_harpoon
+            ['<c-h>'] = telescope.extensions.send_to_harpoon.actions.send_selected_to_harpoon,
             --['<esc>'] = require("telescope.actions").close,
             --['<C-s>'] = require('telescope.actions').add_selection,
             --['<C-x>'] = require('telescope.actions').remove_selection,
-            --['<C-j>'] = require('telescope.actions').move_selection_next,
-            --['<C-k>'] = require('telescope.actions').move_selection_previous,
+            ['<C-j>'] = actions.move_selection_next,
+            ['<C-k>'] = actions.move_selection_previous,
             --['<C-v>'] = require('telescope.actions').move_selection_previous,
             --['<leader>-'] = require('telescope.actions').select_horizontal,
             --['<leader>\\'] = require('telescope.actions').select_vertical,
             --['<C-h>'] = require('telescope.actions').add_to_qflist,
             --['<C-a>'] = require('telescope.actions').add_selected_to_qflist,
-            --['<C-q>'] = require('telescope.actions').send_selected_to_qflist,
+            ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
           },
           ['n'] = {
-            ['<c-h>'] = telescope.extensions.send_to_harpoon.actions.send_selected_to_harpoon
-            --['<esc>'] = require("telescope.actions").close,
+            ['<c-h>'] = telescope.extensions.send_to_harpoon.actions.send_selected_to_harpoon,
+            ['q'] = require("telescope.actions").close,
             --['<C-s>'] = require('telescope.actions').add_selection,
             --['<C-x>'] = require('telescope.actions').remove_selection,
-            --['<C-j>'] = require('telescope.actions').move_selection_next,
-            --['<C-k>'] = require('telescope.actions').move_selection_previous,
+            ['<C-j>'] = require('telescope.actions').move_selection_next,
+            ['<C-k>'] = require('telescope.actions').move_selection_previous,
             --['-'] = require('telescope.actions').select_horizontal,
             --['\\'] = require('telescope.actions').select_vertical,
             --['t'] = require('telescope.actions').select_tab,
@@ -68,6 +72,7 @@ return {
     telescope.load_extension('send_to_harpoon')
     telescope.load_extension('undo')
     telescope.load_extension('vimwiki')
+    telescope.load_extension('fzf')
   end,
   -- TODO: Keymap Strategy
   keys = {
@@ -78,17 +83,17 @@ return {
     },
     {
       '<leader>fF',
-      function() require('telescope.builtin').find_files({hidden=true}) end,
+      function() require('telescope.builtin').find_files({ hidden = true }) end,
       desc = 'Telescope Find Files'
     },
     {
-      '<leader>fF',
-      function() require('telescope.builtin').find_files({hidden=true}) end,
+      '<leader>fg',
+      function() require('telescope.builtin').live_grep() end,
       desc = 'Telescope Find Files'
     },
     {
-      '<leader>fF',
-      function() require('telescope.builtin').find_files({hidden=true}) end,
+      '<leader>fG',
+      function() require('telescope.builtin').live_grep({ hidden = true }) end,
       desc = 'Telescope Find Files'
     },
     {
