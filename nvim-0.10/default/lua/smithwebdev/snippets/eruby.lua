@@ -16,6 +16,43 @@ return {
     )
   ),
 
+  ------------------------
+  --   Link_to helper   --
+  ------------------------
+  s(
+    { trig = 'ltc', name = 'Link To', dscr = "Rails 'link to' helper" },
+    fmt([[<%= link_to {}, {}{}{}%>]], {
+      c(1, {
+        { t("'"), i(1), t("'") },
+        i(1),
+      }),
+      c(2, {
+        { i(1) },
+        { i(1), t('_path') },
+        { i(1), t('_path ') },
+        { i(1), t('_path('), i(2), t(')') },
+        { t('new_'), i(1), t('_path') },
+        { t('edit_'), i(1), t('_path('), i(2), t(')') },
+        { t("'"), i(1), t("'") },
+      }),
+      c(3, {
+        { i(1) },
+        { t(", class: '"), i(1), t("' ") },
+        { t(", class: '<%= "), i(1), t("%>' ") },
+      }),
+      c(4, {
+        t(""),
+        { i(1) },
+        { t(', data: { turbo_frame: '), i(1), t(')}') },
+        { t(', data: { turbo_frame: dom_id('), i(1), t(')}') },
+        { t(', data: { turbo_method: dom_id('), i(1), t(')}') },
+        { t(', data: { turbo_method: :delete') },
+        { t(", data: { turbo_method: :delete, turbo_confirm: '"), i(1), t("'}") },
+        { t('method: :delete') }
+      }),
+    })
+  ),
+
   s(
     "snipt",
     fmt(
