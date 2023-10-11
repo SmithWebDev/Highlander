@@ -77,10 +77,58 @@ return {
     )
   ),
 
+  -- Ruby Model Association - Has One Attached
+  s(
+    { trig = "ho", name = "Has One", dscr = "Ruby Model Association - Has One" },
+    fmt([[has_one :{}]], {
+      c(1, {
+        i(1),
+        { i(1), t(", through: :"), i(2) },
+        { i(1), t(", dependent: :"), i(2) },
+      }),
+    })
+  ),
+
+  -- Ruby Model Association - Has One
+  s(
+    { trig = "hoa", name = "Has One Attached", dscr = "Ruby Model Association - Has One Attached" },
+    fmt([[has_one_attached :{}]], {
+      c(1, {
+        i(1),
+        { i(1), t(", through: :"), i(2) },
+        { i(1), t(", dependent: :"), i(2) },
+      }),
+    })
+  ),
+
   -- Ruby Model Association - Has Many
   s(
     { trig = "hm", name = "Has Many", dscr = "Ruby Model Association - Has Many" },
     fmt([[has_many :{}]], {
+      c(1, {
+        i(1),
+        { i(1), t(", through: :"), i(2) },
+        { i(1), t(", dependent: :"), i(2) },
+      }),
+    })
+  ),
+
+  -- Ruby Model Association - Has Many Attached
+  s(
+    { trig = "hma", name = "Has Many Attached", dscr = "Ruby Model Association - Has Many Attached" },
+    fmt([[has_many_attached :{}]], {
+      c(1, {
+        i(1),
+        { i(1), t(", through: :"), i(2) },
+        { i(1), t(", dependent: :"), i(2) },
+      }),
+    })
+  ),
+
+  -- Ruby Model Association - Has Rich Text
+  s(
+    { trig = "hrt", name = "Has Rich Text", dscr = "Ruby Model - Has Rich Text" },
+    fmt([[has_rich_text :{}]], {
       c(1, {
         i(1),
         { i(1), t(", through: :"), i(2) },

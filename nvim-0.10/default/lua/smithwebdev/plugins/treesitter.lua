@@ -21,10 +21,10 @@ return {
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
         'css',
-        --  'dockerfile',
-        'elixir',
-        'heex',
-        'eex',
+        'dockerfile',
+        --'elixir',
+        --'heex',
+        --'eex',
         --  'gitignore',
         --  'go',
         --  'graphql',
@@ -34,7 +34,7 @@ return {
         'jsonc',
         'json5',
         'lua',
-        --  'markdown',
+        'markdown',
         'query',
         --  'regex',
         'ruby',
@@ -42,7 +42,7 @@ return {
         --  'tsx',
         --  'typescript',
         'vimdoc',
-        --  'yaml'
+        'yaml'
       },
       sync_install = true,
       --indent = {

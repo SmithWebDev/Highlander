@@ -11,8 +11,15 @@ return {
     local keymap = vim.keymap
     local builtin = require('telescope.builtin')
     local opts = { noremap = true, silent = true }
+    local lsp_signature = require('lsp_signature')
     local on_attach = function(client, bufnr)
 
+      lsp_signature.setup({
+        bind = true,
+        handler_opts = {
+          border = "rounded"
+        }
+      })
       ------------------------
       --    LSP Keymaps     --
       ------------------------
@@ -31,10 +38,8 @@ return {
         builtin.lsp_definitions()
       end, opts)
 
-      opts.desc = "Show LSP definitions"
-      keymap.set("n", "<leader>ld", function()
-        builtin.lsp_definitions()
-      end, opts)
+      opts.desc = "LSP formatting"
+      keymap.set("n", "<leader>lf",vim.lsp.buf.format, opts)
 
       opts.desc = "Show LSP impementations"
       keymap.set("n", "<leader>li", function()
@@ -44,6 +49,11 @@ return {
       opts.desc = "Show LSP type definitions"
       keymap.set("n", "<leader>lt", function()
         builtin.lsp_type_definitions()
+      end, opts)
+
+      opts.desc = ""
+      keymap.set("n", "<leader>lK", function()
+        lsp_signature.toggle_float_win()
       end, opts)
 
       opts.desc = "Show available code actions"
@@ -148,10 +158,10 @@ return {
       }
     })
 
-    lspconfig["standardrb"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    --lspconfig["standardrb"].setup({
+    --  capabilities = capabilities,
+    --  on_attach = on_attach,
+    --})
 
     lspconfig["tailwindcss"].setup({
       capabilities = capabilities,

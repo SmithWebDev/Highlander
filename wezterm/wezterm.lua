@@ -137,13 +137,17 @@ return {
       direction = 'Down',
       size = { Percent = 20 }
     },   },
-    { key = 'q',  mods = 'LEADER', action = wezterm.action.SplitPane({
-      direction = 'Right',
-      size = { Percent = 25 }
-    }) },
     { key = 'h',  mods = 'LEADER', action = wezterm.action.SplitPane({
       direction = 'Right',
       size = { Percent = 50 }
+    }) },
+    { key = 't',  mods = 'LEADER', action = wezterm.action.SplitPane({
+      direction = 'Right',
+      size = { Percent = 33 }
+    }) },
+    { key = 'q',  mods = 'LEADER', action = wezterm.action.SplitPane({
+      direction = 'Right',
+      size = { Percent = 25 }
     }) },
 
     -- toggle maximize pane
@@ -188,7 +192,7 @@ return {
   --term = 'wezterm',
   --use_fancy_tab_bar = false,
   --  window_background_image = '$HOME/Personal Media/Images/desktop/raven_by_z__ed_ddmeskm-fullview.jpg',
-  window_background_opacity = 0.4,
+  window_background_opacity = 1.0,
   window_frame = {
     font_size = 16.0,
   },
