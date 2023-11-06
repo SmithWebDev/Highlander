@@ -2,6 +2,9 @@ return{
   'nvim-pack/nvim-spectre', -- https://github.com/nvim-pack/nvim-spectre
   config = function ()
     require('spectre').setup(
+
+    vim.keymap.set('n', '<leader><leader>ss', ':Spectre<CR>', { desc = 'Toggle Spectre', silent = true })
+
     -- TODO: Keymap Strategy
       --mapping={
       --  ['toggle_line'] = {
