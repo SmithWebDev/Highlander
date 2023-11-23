@@ -42,7 +42,7 @@ _G.luasnip.vars = {
   username = 'smithwebdev',
   email = 'smithwebdd@gmail.com',
   github = 'https://github.com/smithwebdev',
-  real_name = 'Darrick Smith',
+  real_name = 'DB Smith',
 }
 
 --- Options for marks to be used in a TODO comment
