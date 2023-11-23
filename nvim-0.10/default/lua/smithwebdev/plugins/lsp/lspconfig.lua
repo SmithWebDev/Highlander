@@ -131,37 +131,42 @@ return {
       }
     })
 
-    lspconfig["rubocop"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+    --lspconfig["rubocop"].setup({
+    --  capabilities = capabilities,
+    --  on_attach = on_attach,
+    --})
 
     lspconfig["ruby_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
 
-    lspconfig["solargraph"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = {
-        solargraph = {
-          diagnostics = true,
-          completion = true,
-          flags = {
-            debounce_text_changes = 150
-          },
-          initializationOptions = {
-            formatting = true
-          }
-        }
-      }
-    })
+    --lspconfig["solargraph"].setup({
+    --  capabilities = capabilities,
+    --  on_attach = on_attach,
+    --  settings = {
+    --    solargraph = {
+    --      diagnostics = true,
+    --      completion = true,
+    --      flags = {
+    --        debounce_text_changes = 150
+    --      },
+    --      initializationOptions = {
+    --        formatting = true
+    --      }
+    --    }
+    --  }
+    --})
 
     --lspconfig["standardrb"].setup({
     --  capabilities = capabilities,
     --  on_attach = on_attach,
     --})
+
+    lspconfig["syntax_tree"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
 
     lspconfig["tailwindcss"].setup({
       capabilities = capabilities,
@@ -190,5 +195,18 @@ return {
         css = 'css'
       }
     })
+
+    lspconfig['stimulus_ls'].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = {
+
+      }
+    })
+
+
+    -- cmd = { 'stimulus-language-server', '--stdio' },
+    -- filetypes = { 'html', 'ruby', 'eruby', 'haml', 'slim', 'php' },
+
   end
 }
